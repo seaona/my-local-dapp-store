@@ -14,7 +14,7 @@ import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 import MenuBuilder from './menu';
 import { resolveHtmlPath } from './util';
-import { spawnShell } from './shell-script';
+import { install } from './shell';
 
 class AppUpdater {
   constructor() {
@@ -28,29 +28,11 @@ let mainWindow: BrowserWindow | null = null;
 
 ipcMain.on('ipc-example', async (event, arg) => {
   const msgTemplate = (pingPong: string) => `IPC test: ${pingPong}`;
-  console.log(msgTemplate(arg));
-  // TODO:reply a list of all dapps
-  if (arg[0] === 'init') {
-    const dappsMock = [
-      {
-        name: 'ENS',
-        key: 'ens-app',
-        isInstalled: true,
-        imageUrl:
-          'https://app.ens.domains/static/media/ENSLogo.7345281bf4086d716e34fd63fabcb4aa.svg',
-        description:
-          'The Ethereum Name Service (ENS) is a distributed, open, and extensible naming system based on the Ethereum blockchain.',
-      },
-    ];
-    event.reply('ipc-example', JSON.stringify(dappsMock));
-    return;
-  }
   // TODO:install or start a dapp
   if (arg[0] === 'install') {
     const appKey = arg[1];
-    // spawnShell(appKey);
+    install(appKey);
     // TODO: use this appKey in the shell-script
-    shell.openExternal('https://www.google.com/');
   }
 
   event.reply('ipc-example', msgTemplate('pong'));

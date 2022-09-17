@@ -16,7 +16,7 @@ const Dapps = () => {
             </ul>
           </div>
         </aside>
-        <main role="main" className="w-full sm:w-2/3 md:w-3/4 pt-1 px-2">
+        <main role="main" className="w-full sm:w-2/3 md:w-3/4 pt-1 px-2 ">
           <Cards />
         </main>
       </div>
