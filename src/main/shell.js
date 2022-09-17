@@ -19,23 +19,36 @@ function isInstalled(dapp) {
 }
 
 async function install(dapp) {
+  console.log("Creating main folder");
   await spawn('mkdir', ['local-app']);
+  console.log("Cloning the project");
   await spawn('git', ['clone', dappsData[dapp].codebase], { cwd: 'local-app' });
-  // await spawn('yarn', ['install'], { cwd: 'local-app/ens-app' });
+  console.log("Installing dependencies");
+  await spawn('yarn', ['install'], { cwd: `local-app/${dappsData[dapp].folder}` });
+  //await spawn('yarn', ['audit', '--fix'], { cwd: `local-app/${dappsData[dapp].folder}` });
 }
 
 async function start(dapp) {
+  console.log("Starting project")
   await spawn('yarn', ['start'], {
     detached: true,
     cwd: `local-app/${dappsData[dapp].folder}`,
   });
 }
 
-async function allSteps() {
-  // await executeShell();
-  await install();
+async function runLocalApp(dapp) {
+  const installed = isInstalled(dapp)
+  console.log(installed)
+  if(installed) {
+    console.log("installed")
+    await start(dapp);
+  }
+  else {
+    console.log("not installed")
+    await install(dapp);
+    await start(dapp);
+  }
 }
-install('ens');
-// start('ens');
+runLocalApp('ens');
 
-export { install };
+module.exports = runLocalApp ;
