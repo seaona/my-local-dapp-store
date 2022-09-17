@@ -31,7 +31,7 @@ const Card = ({ dapp }: { dapp: Dapp }) => {
     <div className="w-72 rounded overflow-hidden shadow-lg">
       <div className="flex flex-row justify-center px-6 items-center">
         <img
-          className="bg-blue-600 p-1 w-24 h-24"
+          className="m-1 w-24 h-24"
           src={dapp.imageUrl}
           alt={`"logo of the" ${dapp.name}`}
         />

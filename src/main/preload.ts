@@ -24,7 +24,7 @@ contextBridge.exposeInMainWorld('electron', {
           key: 'ens',
           isInstalled: true,
           imageUrl:
-            'https://app.ens.domains/static/media/ENSLogo.7345281bf4086d716e34fd63fabcb4aa.svg',
+            'https://464911102-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/collections%2F2TjMAeHSzwlQgcOdL48E%2Ficon%2FKWP0gk2C6bdRPliWIA6o%2Fens%20transparent%20background.png?alt=media&token=bd28b063-5a75-4971-890c-97becea09076',
           description:
             'The Ethereum Name Service (ENS) is a distributed, open, and extensible naming system based on the Ethereum blockchain.',
         },
@@ -33,7 +33,7 @@ contextBridge.exposeInMainWorld('electron', {
           key: 'uniswap',
           isInstalled: false,
           imageUrl:
-            'https://upload.wikimedia.org/wikipedia/commons/thu…go.svg/1200px-Uniswap_Logo.svg.png?20210117065440',
+            'https://thegivingblock.com/wp-content/uploads/2021/07/Uniswap-Logo.png',
           description:
             'The Uniswap Protocol is an open-source protocol for providing liquidity and trading ERC20 tokens on Ethereum.',
         },
