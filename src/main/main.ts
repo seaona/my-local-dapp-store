@@ -14,7 +14,7 @@ import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 import MenuBuilder from './menu';
 import { resolveHtmlPath } from './util';
-import { spawnShell} from './shell-script';
+import { spawnShell } from './shell-script';
 
 class AppUpdater {
   constructor() {
@@ -26,11 +26,24 @@ class AppUpdater {
 
 let mainWindow: BrowserWindow | null = null;
 
+// TODO: wrap up the download script
+
 ipcMain.on('ipc-example', async (event, arg) => {
   const msgTemplate = (pingPong: string) => `IPC test: ${pingPong}`;
   console.log(msgTemplate(arg));
+  if (arg[0] === 'start') {
+    event.reply('ipc-example', JSON.stringify(['ens']));
+    return;
+  }
+  shell.openExternal('https://www.google.com/');
   event.reply('ipc-example', msgTemplate('pong'));
 });
+
+// ipcMain.on('my-init-test', async (event, arg) => {
+//   const msgTemplate = (pingPong: string) => `IPC test: ${pingPong}`;
+//   console.log(msgTemplate(arg));
+//   event.reply('ipc-example', msgTemplate('pong'));
+// });
 
 if (process.env.NODE_ENV === 'production') {
   const sourceMapSupport = require('source-map-support');
@@ -57,9 +70,6 @@ const installExtensions = async () => {
     .catch(console.log);
 };
 
-const runShellScript = async () => {
-  shell.openExternal('https://github.com')
-}
 const createWindow = async () => {
   if (isDebug) {
     await installExtensions();
@@ -79,7 +89,7 @@ const createWindow = async () => {
     height: 728,
     icon: getAssetPath('icon.png'),
     webPreferences: {
-      sandbox: true,
+      sandbox: false,
       preload: app.isPackaged
         ? path.join(__dirname, 'preload.js')
         : path.join(__dirname, '../../.erb/dll/preload.js'),
@@ -133,7 +143,6 @@ app
   .whenReady()
   .then(() => {
     createWindow();
-    runShellScript();
     spawnShell();
     app.on('activate', () => {
       // On macOS it's common to re-create a window in the app when the
