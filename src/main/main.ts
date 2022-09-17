@@ -57,9 +57,6 @@ const installExtensions = async () => {
     .catch(console.log);
 };
 
-const runShellScript = async () => {
-  shell.openExternal('https://github.com')
-}
 const createWindow = async () => {
   if (isDebug) {
     await installExtensions();
@@ -79,7 +76,7 @@ const createWindow = async () => {
     height: 728,
     icon: getAssetPath('icon.png'),
     webPreferences: {
-      sandbox: true,
+      sandbox: false,
       preload: app.isPackaged
         ? path.join(__dirname, 'preload.js')
         : path.join(__dirname, '../../.erb/dll/preload.js'),
@@ -133,7 +130,6 @@ app
   .whenReady()
   .then(() => {
     createWindow();
-    runShellScript();
     spawnShell();
     app.on('activate', () => {
       // On macOS it's common to re-create a window in the app when the

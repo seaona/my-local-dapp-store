@@ -5,33 +5,19 @@ export function runShellScript () {
     shell.openExternal('https://github.com')
 }*/
 
+import { app } from 'electron';
 import { spawn, exec } from 'child_process'
 
+const GNOME_TERMINAL = 'gnome-terminal';
+const MAC_TERMINAL = 'Terminal';
+
+const atPath = app.getPath ('desktop');
 
 export function spawnShell () {
-console.log("skdksdj")
-
-exec("ls -la", (error, stdout, stderr) => {
-  if (error) {
-      console.log(`error: ${error.message}`);
-      return;
-  }
-  if (stderr) {
-      console.log(`stderr: ${stderr}`);
-      return;
-  }
-  console.log(`stdout: ${stdout}`);
-});
-let command = spawn('ls', ['-lh', '/usr']);
-
-command.stdout.on("data", (data: any) => {
-  // Handle data...
-  console.log(data) 
-});
-
-command.stderr.on('data', (data: any) => {
-  console.error(`stderr: ${data}`);
-});
+ //shell.openExternal('https://github.com')
+ let openTerminalAtPath = spawn(GNOME_TERMINAL, { cwd: atPath });
+ openTerminalAtPath.on ('error', (err) => { console.log (err); });
+ 
 
 }
 

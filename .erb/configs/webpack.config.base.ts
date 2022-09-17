@@ -10,7 +10,7 @@ const configuration: webpack.Configuration = {
   externals: [...Object.keys(externals || {})],
 
   stats: 'errors-only',
-
+  
   module: {
     rules: [
       {
