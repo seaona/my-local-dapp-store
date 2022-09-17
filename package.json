@@ -263,6 +263,7 @@
     ],
     "logLevel": "quiet"
   },
+
   "browser":{
     "child_process": false,
     "fs": false
