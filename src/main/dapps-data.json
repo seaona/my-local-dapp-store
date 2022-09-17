@@ -1,0 +1,10 @@
+{
+    "ens": {
+        "codebase": "https://github.com/ensdomains/ens-app.git",
+        "folder": "ens-app"
+    },
+    "uniswap": {
+        "codebase": "https://github.com/Uniswap/interface",
+        "folder": "interface"
+ }
+}
