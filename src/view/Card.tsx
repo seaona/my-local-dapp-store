@@ -8,27 +8,16 @@ type Dapp = {
   key: string;
 };
 
-// TODO: mock data
-const dappsMock = [
-  {
-    name: 'ENS',
-    key: 'ens',
-    isInstalled: true,
-    imageUrl:
-      'https://app.ens.domains/static/media/ENSLogo.7345281bf4086d716e34fd63fabcb4aa.svg',
-    description:
-      'The Ethereum Name Service (ENS) is a distributed, open, and extensible naming system based on the Ethereum blockchain.',
-  },
-];
-
 const Card = ({ dapp }: { dapp: Dapp }) => {
   const triggerSetup = (dappKey: string) => {
-    // console.log(dappKey);
-    window.electron.ipcRenderer.sendMessage('ipc-example', ['install']);
+    window.electron.ipcRenderer.sendMessage('ipc-example', [
+      'install',
+      dappKey,
+    ]);
   };
 
   return (
-    <div className="w-72 rounded overflow-hidden shadow-lg">
+    <div className="w-72 rounded-xl overflow-hidden shadow-lg mx-3 pt-2 border-gray-100 border-2">
       <div className="flex flex-row justify-center px-6 items-center">
         <img
           className="m-1 w-24 h-24"
@@ -52,7 +41,7 @@ const Card = ({ dapp }: { dapp: Dapp }) => {
         <button
           className="bg-blue-500 hover:bg-blue-700 text-white px-2 rounded text-sm h-7"
           type="button"
-          onClick={(_) => triggerSetup(dapp.name)}
+          onClick={(_) => triggerSetup(dapp.key)}
         >
           {dapp.isInstalled ? 'Start' : 'Install and Start'}
         </button>
@@ -68,7 +57,7 @@ const Cards = () => {
     setDapps(JSON.parse(curDapps));
   }, []);
   return (
-    <div className="flex flex-row">
+    <div className="flex flex-row justify-between ">
       {dapps.length === 0 && <div>loading</div>}
       {dapps.length > 0 &&
         dapps.map((dapp) => <Card dapp={dapp} key={dapp.name} />)}

@@ -14,7 +14,7 @@ import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 import MenuBuilder from './menu';
 import { resolveHtmlPath } from './util';
-import { install } from './shell';
+import runLocalApp from './shell';
 
 class AppUpdater {
   constructor() {
@@ -31,7 +31,9 @@ ipcMain.on('ipc-example', async (event, arg) => {
   // TODO:install or start a dapp
   if (arg[0] === 'install') {
     const appKey = arg[1];
-    install(appKey);
+    console.log(appKey);
+    // install(appKey);
+    runLocalApp(appKey);
     // TODO: use this appKey in the shell-script
   }
 
@@ -136,7 +138,6 @@ app
   .whenReady()
   .then(() => {
     createWindow();
-    // spawnShell();
     app.on('activate', () => {
       // On macOS it's common to re-create a window in the app when the
       // dock icon is clicked and there are no other windows open.

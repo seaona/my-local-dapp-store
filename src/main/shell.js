@@ -19,15 +19,19 @@ function isInstalled(dapp) {
 }
 
 async function install(dapp) {
-  console.log("Cloning the project");
-  await spawnSync('git', ['clone', dappsData[dapp].codebase], { cwd: 'local-app' });
-  console.log("Installing dependencies");
-  await spawnSync('yarn', ['install'], { cwd: `local-app/${dappsData[dapp].folder}` });
-  //await spawn('yarn', ['audit', '--fix'], { cwd: `local-app/${dappsData[dapp].folder}` });
+  console.log('Cloning the project');
+  await spawnSync('git', ['clone', dappsData[dapp].codebase], {
+    cwd: 'local-app',
+  });
+  console.log('Installing dependencies');
+  await spawnSync('yarn', ['install'], {
+    cwd: `local-app/${dappsData[dapp].folder}`,
+  });
+  // await spawn('yarn', ['audit', '--fix'], { cwd: `local-app/${dappsData[dapp].folder}` });
 }
 
 async function start(dapp) {
-  console.log("Starting project")
+  console.log('Starting project');
   await spawnSync('yarn', ['start'], {
     detached: true,
     cwd: `local-app/${dappsData[dapp].folder}`,
@@ -35,17 +39,16 @@ async function start(dapp) {
 }
 
 async function runLocalApp(dapp) {
-  const installed = isInstalled(dapp)
-  if(installed) {
-    console.log("installed")
+  const installed = isInstalled(dapp);
+  if (installed) {
+    console.log('installed');
     await start(dapp);
-  }
-  else {
-    console.log("not installed")
+  } else {
+    console.log('not installed');
     await install(dapp);
     await start(dapp);
   }
 }
-runLocalApp('ens');
+// runLocalApp('ens');
 
-module.exports = runLocalApp ;
+module.exports = runLocalApp;
