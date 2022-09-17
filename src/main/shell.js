@@ -1,5 +1,5 @@
 const { exec } = require('child_process');
-const { spawn } = require('child_process');
+const { spawn, spawnSync } = require('child_process');
 const dappsData = require('./dapps-data.json');
 
 function isInstalled(dapp) {
@@ -19,18 +19,16 @@ function isInstalled(dapp) {
 }
 
 async function install(dapp) {
-  console.log("Creating main folder");
-  await spawn('mkdir', ['local-app']);
   console.log("Cloning the project");
-  await spawn('git', ['clone', dappsData[dapp].codebase], { cwd: 'local-app' });
+  await spawnSync('git', ['clone', dappsData[dapp].codebase], { cwd: 'local-app' });
   console.log("Installing dependencies");
-  await spawn('yarn', ['install'], { cwd: `local-app/${dappsData[dapp].folder}` });
+  await spawnSync('yarn', ['install'], { cwd: `local-app/${dappsData[dapp].folder}` });
   //await spawn('yarn', ['audit', '--fix'], { cwd: `local-app/${dappsData[dapp].folder}` });
 }
 
 async function start(dapp) {
   console.log("Starting project")
-  await spawn('yarn', ['start'], {
+  await spawnSync('yarn', ['start'], {
     detached: true,
     cwd: `local-app/${dappsData[dapp].folder}`,
   });
@@ -38,7 +36,6 @@ async function start(dapp) {
 
 async function runLocalApp(dapp) {
   const installed = isInstalled(dapp)
-  console.log(installed)
   if(installed) {
     console.log("installed")
     await start(dapp);
