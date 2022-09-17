@@ -11,9 +11,4 @@ window.electron.ipcRenderer.once('ipc-example', (arg) => {
   console.log(arg);
 });
 
-// window.electron.ipcRenderer.on('my-init-test', (arg) => {
-//   // eslint-disable-next-line no-console
-//   console.log(arg);
-// });
-
-window.electron.ipcRenderer.sendMessage('ipc-example', ['start']);
+// window.electron.ipcRenderer.sendMessage('ipc-example', ['init']);

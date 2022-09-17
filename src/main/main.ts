@@ -26,24 +26,35 @@ class AppUpdater {
 
 let mainWindow: BrowserWindow | null = null;
 
-// TODO: wrap up the download script
-
 ipcMain.on('ipc-example', async (event, arg) => {
   const msgTemplate = (pingPong: string) => `IPC test: ${pingPong}`;
   console.log(msgTemplate(arg));
-  if (arg[0] === 'start') {
-    event.reply('ipc-example', JSON.stringify(['ens']));
+  // TODO:reply a list of all dapps
+  if (arg[0] === 'init') {
+    const dappsMock = [
+      {
+        name: 'ENS',
+        key: 'ens-app',
+        isInstalled: true,
+        imageUrl:
+          'https://app.ens.domains/static/media/ENSLogo.7345281bf4086d716e34fd63fabcb4aa.svg',
+        description:
+          'The Ethereum Name Service (ENS) is a distributed, open, and extensible naming system based on the Ethereum blockchain.',
+      },
+    ];
+    event.reply('ipc-example', JSON.stringify(dappsMock));
     return;
   }
-  shell.openExternal('https://www.google.com/');
+  // TODO:install or start a dapp
+  if (arg[0] === 'install') {
+    const appKey = arg[1];
+    // spawnShell(appKey);
+    // TODO: use this appKey in the shell-script
+    shell.openExternal('https://www.google.com/');
+  }
+
   event.reply('ipc-example', msgTemplate('pong'));
 });
-
-// ipcMain.on('my-init-test', async (event, arg) => {
-//   const msgTemplate = (pingPong: string) => `IPC test: ${pingPong}`;
-//   console.log(msgTemplate(arg));
-//   event.reply('ipc-example', msgTemplate('pong'));
-// });
 
 if (process.env.NODE_ENV === 'production') {
   const sourceMapSupport = require('source-map-support');
@@ -143,7 +154,7 @@ app
   .whenReady()
   .then(() => {
     createWindow();
-    spawnShell();
+    // spawnShell();
     app.on('activate', () => {
       // On macOS it's common to re-create a window in the app when the
       // dock icon is clicked and there are no other windows open.

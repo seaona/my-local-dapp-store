@@ -1,12 +1,19 @@
+import * as React from 'react';
+
 type Dapp = {
   name: string;
   imageUrl: string;
   description: string;
+  isInstalled: boolean;
+  key: string;
 };
 
-const dapps = [
+// TODO: mock data
+const dappsMock = [
   {
     name: 'ENS',
+    key: 'ens',
+    isInstalled: true,
     imageUrl:
       'https://app.ens.domains/static/media/ENSLogo.7345281bf4086d716e34fd63fabcb4aa.svg',
     description:
@@ -16,7 +23,8 @@ const dapps = [
 
 const Card = ({ dapp }: { dapp: Dapp }) => {
   const triggerSetup = (dappKey: string) => {
-    window.electron.ipcRenderer.sendMessage('ipc-example', [dappKey]);
+    // console.log(dappKey);
+    window.electron.ipcRenderer.sendMessage('ipc-example', ['install']);
   };
 
   return (
@@ -33,7 +41,14 @@ const Card = ({ dapp }: { dapp: Dapp }) => {
         <div className="font-bold text-xl mb-1 text-center">{dapp.name}</div>
         <p className="text-gray-700 text-xs">{dapp.description}</p>
       </div>
-      <div className="px-6 pb-3 text-center">
+      <div className="px-6 pb-3 text-center flex flex-row justify-between align-middle">
+        <span
+          className={`${
+            dapp.isInstalled ? 'bg-teal-700' : 'bg-orange-400'
+          } px=3`}
+        >
+          {dapp.isInstalled ? 'uninstalled' : 'installed'}
+        </span>
         <button
           className="bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded"
           type="button"
@@ -47,11 +62,16 @@ const Card = ({ dapp }: { dapp: Dapp }) => {
 };
 
 const Cards = () => {
+  const [dapps, setDapps] = React.useState<Dapp[]>([]);
+  React.useEffect(() => {
+    const curDapps = window.electron.ipcRenderer.getLists();
+    setDapps(JSON.parse(curDapps));
+  }, []);
   return (
     <div>
-      {dapps.map((dapp) => (
-        <Card dapp={dapp} key={dapp.name} />
-      ))}
+      {dapps.length === 0 && <div>loading</div>}
+      {dapps.length > 0 &&
+        dapps.map((dapp) => <Card dapp={dapp} key={dapp.name} />)}
     </div>
   );
 };

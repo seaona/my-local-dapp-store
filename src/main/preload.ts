@@ -18,5 +18,18 @@ contextBridge.exposeInMainWorld('electron', {
     once(channel: Channels, func: (...args: unknown[]) => void) {
       ipcRenderer.once(channel, (_event, ...args) => func(...args));
     },
+    getLists() {
+      return JSON.stringify([
+        {
+          name: 'ENS',
+          key: 'ens-app',
+          isInstalled: true,
+          imageUrl:
+            'https://app.ens.domains/static/media/ENSLogo.7345281bf4086d716e34fd63fabcb4aa.svg',
+          description:
+            'The Ethereum Name Service (ENS) is a distributed, open, and extensible naming system based on the Ethereum blockchain.',
+        },
+      ]);
+    },
   },
 });
