@@ -2,20 +2,25 @@
 
 Your dApp store. Privacy focused and censorship resistance.
 
-## Team: 
+ETH Berlin Hackathon Project
+
+- [Project on Devfilio]()
+
+- [Smart Contract deployed on Goerli Testnet](https://goerli.etherscan.io/address/0x3858406F7E71FdA799881CbBA6270A31F42c010a)
+
+## Team:
 
 - seaona (BE)
 - liang3030 (FE)
+- Lena (SC)
 
-## Problem 
+## Problem
 
-We’ve seen numerous examples of governments sanctioning and shutting down crypto projects. Most of this censor happens on the frontend level (blockchains cant be stopped!). So frontends are the weakest point of the crypto ecosystem. We think that the solution to this is: Going Local!
-
+We’ve seen numerous examples of governments sanctioning and shutting down crypto projects. Most of this censor happens on the frontend level (blockchains cant be stopped!). So the frontend is the weakest point of the crypto ecosystem. We think that the solution to this is: Going Local!
 
 ## Solution
 
 A local dAppstore that allows you to run dapps in your local environment instead of using 3rd parties, so you can avoid censorship, use dapps privately (not exposing your IP address), etc.
-
 
 ## Technical details:
 
@@ -25,7 +30,6 @@ The app functions like a DappStore, it will expose most common Dapps with Open S
 Dapps can be installed and run
 When you install a dapp, it will run a process in the background which will do the necessary installations for building that frontend, and then will expose the service on a localhost
 Built with Typescript and Electron
-
 
 ## Install
 
@@ -54,5 +58,3 @@ To package apps for the local platform:
 ```bash
 npm run package
 ```
-
-
