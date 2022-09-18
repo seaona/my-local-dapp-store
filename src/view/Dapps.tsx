@@ -3,22 +3,22 @@ import Cards from './Card';
 
 const Dapps = () => {
   return (
-    <div className="container flex flex-col h-screen">
+    <div className="container flex flex-col h-screen bg-gray-800">
       <div className="flex flex-row flex-wrap  h-full">
         <aside className="w-1/4 px-2 border-r-2">
-          <div className="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased text-gray-800">
+          <div className="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased text-gray-500 border-slate-300">
             <div className="fixed flex flex-col top-0 left-0 w-full h-full border-r">
-              <div className="overflow-y-auto overflow-x-hidden flex-grow">
+              <div className="overflow-y-auto overflow-x-hidden flex-grow bg-gray-800">
                 <ul className="flex flex-col py-4 space-y-1">
                   <li className="px-5">
                     <div className="flex flex-row items-center h-8">
-                      <div className="text-sm tracking-wide text-gray-600 font-medium">
+                      <div className="text-sm tracking-wide text-gray-500 font-medium">
                         My Local Dapp Store
                       </div>
                     </div>
                   </li>
                   <li>
-                    <div className="relative flex flex-row items-center h-11 focus:outline-none text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6">
+                    <div className="relative flex flex-row items-center h-11 focus:outline-none text-gray-500 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6">
                       <span className="inline-flex justify-center items-center ml-4">
                         <svg
                           className="w-5 h-5"

@@ -28,8 +28,8 @@ const Card = ({ dapp }: { dapp: Dapp }) => {
       </div>
 
       <div className="px-6 py-4">
-        <div className="font-bold text-xl mb-1 text-center">{dapp.name}</div>
-        <p className="text-gray-700 text-xs h-16">{dapp.description}</p>
+        <div className="font-bold text-xl mb-1 text-center text-white">{dapp.name}</div>
+        <p className="text-gray-500 text-xs h-16">{dapp.description}</p>
       </div>
       <div className="px-6 pb-3 text-center flex flex-row justify-between items-center">
         <span
