@@ -5,6 +5,7 @@ type Dapp = {
   imageUrl: string;
   description: string;
   isInstalled: boolean;
+  isPayable: boolean;
   key: string;
 };
 
@@ -38,13 +39,15 @@ const Card = ({ dapp }: { dapp: Dapp }) => {
           } px-2 text-white rounded-full text-sm h-5`}
         >
           {dapp.isInstalled ? 'Installed' : 'Uninstalled'}
+          
         </span>
         <button
-          className="bg-blue-500 hover:bg-blue-700 text-white px-2 rounded text-sm h-7"
+          className={`${dapp.isPayable? "bg-red-500": "bg-blue-500"} hover:bg-blue-700 text-white px-2 rounded text-sm h-7`}
           type="button"
           onClick={(e) => triggerSetup(e, dapp.key)}
         >
-          {dapp.isInstalled ? 'Start' : 'Install and Start'}
+          {dapp.isPayable ? 'Buy' : dapp.isInstalled ? 'Start' : 'Install and Start'}
+          
         </button>
       </div>
     </div>
