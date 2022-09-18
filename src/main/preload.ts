@@ -38,13 +38,31 @@ contextBridge.exposeInMainWorld('electron', {
             'The Uniswap Protocol is an open-source protocol for providing liquidity and trading ERC20 tokens on Ethereum.',
         },
         {
-          name: 'Airswap',
+          name: 'AIRSWAP',
           key: 'airswap',
           isInstalled: true,
           imageUrl:
             'https://assets.coingecko.com/coins/images/1019/large/Airswap.png',
           description:
-            'The Ethereum Name Service (ENS) is a distributed, open, and extensible naming system based on the Ethereum blockchain.',
+            'AirSwap is a growing decentralized exchange that uses blockchain technology and smart contracts for direct peer-to-peer trade.',
+        },
+        {
+          name: 'SUSHI SWAP',
+          key: 'sushi',
+          isInstalled: false,
+          imageUrl:
+            'https://s2.coinmarketcap.com/static/img/coins/200x200/6758.png',
+          description:
+            'SushiSwap is a fork of Uniswap that adds the SUSHI token. It grants control over the protocol to holders and pays a portion of fees to them.',
+        },
+        {
+          name: 'LIDO',
+          key: 'lido',
+          isInstalled: false,
+          imageUrl:
+            'https://b.thumbs.redditmedia.com/H5uQJkFUag_u1VxtEkLdS_uHq8rMblym1vABEp2M93o.png',
+          description:
+            'Lido lets you use your staked assets to gain yield on top of yield. Use your tokens (which earn daily staking rewards) as collateral, for lending, yield farming ',
         },
       ]);
     },
