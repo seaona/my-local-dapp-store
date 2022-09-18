@@ -2,7 +2,7 @@
 
 Your dApp store. Privacy focused and censorship resistance.
 
-ETH Berlin Hackathon Project
+!! ETH Berlin Hackathon Project !!
 
 - [Project on Devfilio]()
 
@@ -24,20 +24,19 @@ A local dAppstore that allows you to run dapps in your local environment instead
 
 ## Technical details:
 
-It is a desktop app (supports Mac and Linux)
-You launch the app from your OS
-The app functions like a DappStore, it will expose most common Dapps with Open Source frontend
-Dapps can be installed and run
-When you install a dapp, it will run a process in the background which will do the necessary installations for building that frontend, and then will expose the service on a localhost
-Built with Typescript and Electron
+- desktop app (supports Mac and Linux)
+- open source frontend is localy loaded
+- The app functions like a DappStore, it will expose most common Dapps with Open Source frontend
+  Dapps can be installed and run
+- Built with Typescript, Hardhat, Solidity and Electron
 
 ## Install
 
 Clone the repo and install dependencies:
 
 ```bash
-git clone --depth 1 --branch main https://github.com/electron-react-boilerplate/electron-react-boilerplate.git your-project-name
-cd your-project-name
+git clone --depth 1 --branch main git@github.com:seaona/my-local-dapp-store.git
+cd my-local-dapp-store
 npm install
 ```
 
