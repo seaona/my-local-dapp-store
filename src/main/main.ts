@@ -32,7 +32,7 @@ ipcMain.on('ipc-example', async (event, arg) => {
     runLocalApp(appKey);
   }
 
-  // event.reply('ipc-example', msgTemplate('pong'));
+  event.reply('ipc-example', 'pong');
 });
 
 if (process.env.NODE_ENV === 'production') {

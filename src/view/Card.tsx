@@ -9,7 +9,8 @@ type Dapp = {
 };
 
 const Card = ({ dapp }: { dapp: Dapp }) => {
-  const triggerSetup = (dappKey: string) => {
+  const triggerSetup = (e: any, dappKey: string) => {
+    e.preventDefault();
     window.electron.ipcRenderer.sendMessage('ipc-example', [
       'install',
       dappKey,
@@ -17,7 +18,7 @@ const Card = ({ dapp }: { dapp: Dapp }) => {
   };
 
   return (
-    <div className="w-72 rounded-xl overflow-hidden shadow-lg mx-3 pt-2 border-gray-100 border-2 mb-5">
+    <div className="w-72 rounded-xl overflow-hidden shadow-lg mx-3 pt-2 border-gray-100 border-2 mb-5 z-50">
       <div className="flex flex-row justify-center px-6 items-center">
         <img
           className="m-1 w-24 h-24"
@@ -41,7 +42,7 @@ const Card = ({ dapp }: { dapp: Dapp }) => {
         <button
           className="bg-blue-500 hover:bg-blue-700 text-white px-2 rounded text-sm h-7"
           type="button"
-          onClick={(_) => triggerSetup(dapp.key)}
+          onClick={(e) => triggerSetup(e, dapp.key)}
         >
           {dapp.isInstalled ? 'Start' : 'Install and Start'}
         </button>
