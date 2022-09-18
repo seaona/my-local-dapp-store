@@ -23,6 +23,7 @@ contextBridge.exposeInMainWorld('electron', {
           name: 'ENS',
           key: 'ens',
           isInstalled: true,
+          payable: false,
           imageUrl:
             'https://464911102-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/collections%2F2TjMAeHSzwlQgcOdL48E%2Ficon%2FKWP0gk2C6bdRPliWIA6o%2Fens%20transparent%20background.png?alt=media&token=bd28b063-5a75-4971-890c-97becea09076',
           description:
@@ -32,6 +33,7 @@ contextBridge.exposeInMainWorld('electron', {
           name: 'UNISWAP',
           key: 'uniswap',
           isInstalled: false,
+          payable: false,
           imageUrl:
             'https://thegivingblock.com/wp-content/uploads/2021/07/Uniswap-Logo.png',
           description:
@@ -41,6 +43,7 @@ contextBridge.exposeInMainWorld('electron', {
           name: 'AIRSWAP',
           key: 'airswap',
           isInstalled: true,
+          payable: false,
           imageUrl:
             'https://assets.coingecko.com/coins/images/1019/large/Airswap.png',
           description:
@@ -50,6 +53,7 @@ contextBridge.exposeInMainWorld('electron', {
           name: 'SUSHI SWAP',
           key: 'sushi',
           isInstalled: false,
+          payable: false,
           imageUrl:
             'https://s2.coinmarketcap.com/static/img/coins/200x200/6758.png',
           description:
@@ -59,10 +63,21 @@ contextBridge.exposeInMainWorld('electron', {
           name: 'LIDO',
           key: 'lido',
           isInstalled: false,
+          payable: false,
           imageUrl:
             'https://b.thumbs.redditmedia.com/H5uQJkFUag_u1VxtEkLdS_uHq8rMblym1vABEp2M93o.png',
           description:
             'Lido lets you use your staked assets to gain yield on top of yield. Use your tokens (which earn daily staking rewards) as collateral, for lending, yield farming ',
+        },
+        {
+          name: 'DEFI PORT',
+          key: 'defi',
+          isInstalled: false,
+          isPayable: true,
+          imageUrl:
+            'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Eth-diamond-rainbow.png/800px-Eth-diamond-rainbow.png',
+          description:
+            'DEFI Port is you rprivate DEFI portal, with p2p only products. Yield, swaps, flash-loans, staking and much more!',
         },
       ]);
     },
