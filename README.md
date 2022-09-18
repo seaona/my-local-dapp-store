@@ -1,6 +1,11 @@
 # My Local dApp Store
 
+Your dApp store. Privacy focused and censorship resistance.
 
+## Team: 
+
+- seaona (BE)
+- liang3030 (FE)
 
 ## Problem 
 
@@ -13,6 +18,7 @@ A local dappstore that allows you to run dapps in your local environment instead
 
 
 ## Technical details:
+
 It is a desktop app (supports Mac and Linux)
 You launch the app from your OS
 The app functions like a DappStore, it will expose most common Dapps with Open Source frontend
