@@ -17,7 +17,7 @@ const Card = ({ dapp }: { dapp: Dapp }) => {
   };
 
   return (
-    <div className="w-72 rounded-xl overflow-hidden shadow-lg mx-3 pt-2 border-gray-100 border-2">
+    <div className="w-72 rounded-xl overflow-hidden shadow-lg mx-3 pt-2 border-gray-100 border-2 mb-5">
       <div className="flex flex-row justify-center px-6 items-center">
         <img
           className="m-1 w-24 h-24"
@@ -57,7 +57,7 @@ const Cards = () => {
     setDapps(JSON.parse(curDapps));
   }, []);
   return (
-    <div className="flex flex-row justify-between ">
+    <div className="flex flex-row justify-space flex-wrap">
       {dapps.length === 0 && <div>loading</div>}
       {dapps.length > 0 &&
         dapps.map((dapp) => <Card dapp={dapp} key={dapp.name} />)}

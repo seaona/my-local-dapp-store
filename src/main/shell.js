@@ -1,4 +1,4 @@
-const { exec } = require('child_process');
+// const { exec } = require('child_process');
 const { spawn, spawnSync } = require('child_process');
 const dappsData = require('./dapps-data.json');
 
@@ -27,7 +27,6 @@ async function install(dapp) {
   await spawnSync('yarn', ['install'], {
     cwd: `local-app/${dappsData[dapp].folder}`,
   });
-  // await spawn('yarn', ['audit', '--fix'], { cwd: `local-app/${dappsData[dapp].folder}` });
 }
 
 async function start(dapp) {
