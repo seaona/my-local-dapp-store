@@ -27,17 +27,12 @@ class AppUpdater {
 let mainWindow: BrowserWindow | null = null;
 
 ipcMain.on('ipc-example', async (event, arg) => {
-  const msgTemplate = (pingPong: string) => `IPC test: ${pingPong}`;
-  // TODO:install or start a dapp
   if (arg[0] === 'install') {
     const appKey = arg[1];
-    console.log(appKey);
-    // install(appKey);
     runLocalApp(appKey);
-    // TODO: use this appKey in the shell-script
   }
 
-  event.reply('ipc-example', msgTemplate('pong'));
+  event.reply('ipc-example', 'pong');
 });
 
 if (process.env.NODE_ENV === 'production') {
