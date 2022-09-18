@@ -10,7 +10,7 @@
     "strict": true,
     "pretty": true,
     "sourceMap": true,
-    "baseUrl": "./src",
+    "baseUrl": "docs",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
