@@ -14,7 +14,7 @@ We’ve seen numerous examples of governments sanctioning and shutting down cryp
 
 ## Solution
 
-A local dappstore that allows you to run dapps in your local environment instead of using 3rd parties, so you can avoid censorship, use dapps privately (not exposing your IP address), etc.
+A local dAppstore that allows you to run dapps in your local environment instead of using 3rd parties, so you can avoid censorship, use dapps privately (not exposing your IP address), etc.
 
 
 ## Technical details:
@@ -55,11 +55,4 @@ To package apps for the local platform:
 npm run package
 ```
 
-## Docs
-
-See our [docs and guides here](https://electron-react-boilerplate.js.org/docs/installation)
-
-## Community
-
-Join our Discord: https://discord.gg/Fjy3vfgy5q
 
