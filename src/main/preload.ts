@@ -37,6 +37,15 @@ contextBridge.exposeInMainWorld('electron', {
           description:
             'The Uniswap Protocol is an open-source protocol for providing liquidity and trading ERC20 tokens on Ethereum.',
         },
+        {
+          name: 'Airswap',
+          key: 'airswap',
+          isInstalled: true,
+          imageUrl:
+            'https://assets.coingecko.com/coins/images/1019/large/Airswap.png',
+          description:
+            'The Ethereum Name Service (ENS) is a distributed, open, and extensible naming system based on the Ethereum blockchain.',
+        },
       ]);
     },
   },
