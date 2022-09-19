@@ -1,6 +1,6 @@
 import { contextBridge, ipcRenderer, IpcRendererEvent } from 'electron';
 
-export type Channels = 'ipc-example';
+export type Channels = 'run-dapp';
 
 contextBridge.exposeInMainWorld('electron', {
   ipcRenderer: {
@@ -18,6 +18,7 @@ contextBridge.exposeInMainWorld('electron', {
       ipcRenderer.once(channel, (_event, ...args) => func(...args));
     },
     getLists() {
+      // TODO: separate it as a file
       return JSON.stringify([
         {
           name: 'ENS',
