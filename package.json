@@ -108,7 +108,6 @@
     }
   },
   "dependencies": {
-    "@types/watch": "^1.0.3",
     "child_process": "^1.0.2",
     "electron-debug": "^3.2.0",
     "electron-log": "^4.4.8",
@@ -129,6 +128,7 @@
     "@types/react-dom": "^18.0.6",
     "@types/react-test-renderer": "^18.0.0",
     "@types/terser-webpack-plugin": "^5.0.4",
+    "@types/watch": "^1.0.3",
     "@types/webpack-bundle-analyzer": "^4.4.2",
     "@typescript-eslint/eslint-plugin": "^5.33.1",
     "@typescript-eslint/parser": "^5.33.1",
@@ -267,9 +267,8 @@
     ],
     "logLevel": "quiet"
   },
-
-  "browser":{
+  "browser": {
     "child_process": false,
     "fs": false
-    }  
+  }
 }
