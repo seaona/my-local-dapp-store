@@ -14,6 +14,7 @@ import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 import MenuBuilder from './menu';
 import { resolveHtmlPath } from './util';
+// import runLocalApp from './shell';
 import runLocalApp from './shell';
 
 class AppUpdater {
@@ -26,13 +27,13 @@ class AppUpdater {
 
 let mainWindow: BrowserWindow | null = null;
 
-ipcMain.on('ipc-example', async (event, arg) => {
+ipcMain.on('run-dapp', async (event, arg) => {
   if (arg[0] === 'install') {
     const appKey = arg[1];
     runLocalApp(appKey);
   }
 
-  event.reply('ipc-example', 'pong');
+  event.reply('run-dapp', 'pong');
 });
 
 if (process.env.NODE_ENV === 'production') {
@@ -112,6 +113,7 @@ const createWindow = async () => {
     return { action: 'deny' };
   });
 
+  // TODO:check if we need auto updates
   // Remove this if your app does not use auto updates
   // eslint-disable-next-line
   new AppUpdater();
@@ -120,7 +122,7 @@ const createWindow = async () => {
 /**
  * Add event listeners...
  */
-
+// TODO:understand what is event listeners
 app.on('window-all-closed', () => {
   // Respect the OSX convention of having the application in memory even
   // after all windows have been closed
@@ -139,4 +141,4 @@ app
       if (mainWindow === null) createWindow();
     });
   })
-  .catch(console.log);
+  .catch(log.error);

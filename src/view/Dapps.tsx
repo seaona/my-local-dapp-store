@@ -1,4 +1,3 @@
-// import 'tailwindcss/tailwind.css';
 import Cards from './Card';
 
 const Dapps = () => {
