@@ -1,8 +1,7 @@
 import { contextBridge, ipcRenderer, IpcRendererEvent } from 'electron';
+import { Channels } from './types';
 
-export type Channels = 'run-dapp';
-
-contextBridge.exposeInMainWorld('electron', {
+contextBridge.exposeInMainWorld('ipcAPI', {
   ipcRenderer: {
     sendMessage(channel: Channels, args: unknown[]) {
       ipcRenderer.send(channel, args);

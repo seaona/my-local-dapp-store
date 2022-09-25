@@ -12,7 +12,7 @@ type Dapp = {
 const Card = ({ dapp }: { dapp: Dapp }) => {
   const triggerSetup = (e: React.MouseEvent, dappKey: string) => {
     e.preventDefault();
-    window.electron.ipcRenderer.sendMessage('run-dapp', ['install', dappKey]);
+    window.ipcAPI.ipcRenderer.sendMessage('run-dapp', ['install', dappKey]);
   };
 
   return (
@@ -26,7 +26,9 @@ const Card = ({ dapp }: { dapp: Dapp }) => {
       </div>
 
       <div className="px-6 py-4">
-        <div className="font-bold text-xl mb-1 text-center text-white">{dapp.name}</div>
+        <div className="font-bold text-xl mb-1 text-center text-white">
+          {dapp.name}
+        </div>
         <p className="text-gray-500 text-xs h-16">{dapp.description}</p>
       </div>
       <div className="px-6 pb-3 text-center flex flex-row justify-between items-center">
@@ -36,15 +38,19 @@ const Card = ({ dapp }: { dapp: Dapp }) => {
           } px-2 text-white rounded-full text-sm h-5`}
         >
           {dapp.isInstalled ? 'Installed' : 'Uninstalled'}
-          
         </span>
         <button
-          className={`${dapp.isPayable? "bg-red-500": "bg-blue-500"} hover:bg-blue-700 text-white px-2 rounded text-sm h-7`}
+          className={`${
+            dapp.isPayable ? 'bg-red-500' : 'bg-blue-500'
+          } hover:bg-blue-700 text-white px-2 rounded text-sm h-7`}
           type="button"
           onClick={(e) => triggerSetup(e, dapp.key)}
         >
-          {dapp.isPayable ? 'Buy' : dapp.isInstalled ? 'Start' : 'Install and Start'}
-          
+          {dapp.isPayable
+            ? 'Buy'
+            : dapp.isInstalled
+            ? 'Start'
+            : 'Install and Start'}
         </button>
       </div>
     </div>
@@ -54,7 +60,7 @@ const Card = ({ dapp }: { dapp: Dapp }) => {
 const Cards = () => {
   const [dapps, setDapps] = React.useState<Dapp[]>([]);
   React.useEffect(() => {
-    const curDapps = window.electron.ipcRenderer.getLists();
+    const curDapps = window.ipcAPI.ipcRenderer.getLists();
     setDapps(JSON.parse(curDapps));
   }, []);
   return (
