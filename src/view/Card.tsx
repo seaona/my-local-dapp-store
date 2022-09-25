@@ -10,12 +10,9 @@ type Dapp = {
 };
 
 const Card = ({ dapp }: { dapp: Dapp }) => {
-  const triggerSetup = (e: any, dappKey: string) => {
+  const triggerSetup = (e: React.MouseEvent, dappKey: string) => {
     e.preventDefault();
-    window.electron.ipcRenderer.sendMessage('ipc-example', [
-      'install',
-      dappKey,
-    ]);
+    window.electron.ipcRenderer.sendMessage('run-dapp', ['install', dappKey]);
   };
 
   return (
